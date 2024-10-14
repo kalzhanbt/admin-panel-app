@@ -26,12 +26,11 @@ const LoginPage = () => {
         password: "",
     };
 
-    const [loginService, { isLoading: isLoginLoading, isError }] = useLoginMutation();
+    const [loginService, { isLoading: isLoginLoading }] = useLoginMutation();
 
     const {
         handleSubmit,
-        reset,
-        formState: { errors, isDirty, isValid },
+        formState: { errors },
         control
     } = useForm<TLoginParams>({ defaultValues: defaultValue });
 

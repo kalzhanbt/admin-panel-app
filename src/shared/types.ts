@@ -1,12 +1,12 @@
 export interface TTruck {
-  id: string;
+  _id: string;
   type: string;
   registeredPlate: string;
   VIN: string;
 }
 
 export interface TTruckDriver {
-  id: string;             
+  _id: string;             
   name: string;           
   surname: string;        
   phoneNumber: string;    

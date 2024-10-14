@@ -62,7 +62,7 @@ const TruckPage = () => {
         } else {
             if (chosenItem !== undefined) {
                 updateTruck({
-                    id: chosenItem.id,
+                    id: chosenItem._id,
                     body: { ...data }
                 })
                     .then(() => {

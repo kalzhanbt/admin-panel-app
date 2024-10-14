@@ -1,6 +1,5 @@
 import { Controller } from 'react-hook-form';
 import { Select } from '../Select';
-import { SelectProps } from '@mui/material';
 
 interface FormSelectProps {
   inputName: string;

@@ -29,7 +29,7 @@ import EditIcon from "@/assets/icons/Edit.icon.svg?react";
 import CloseIcon from "@/assets/icons/Close.icon.svg?react";
 
 const TruckDriversPage = () => {
-    const [chosenItem, setChosenItem] = useState<TTruck>()
+    const [chosenItem, setChosenItem] = useState<TTruckDriver>()
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
     const [isCreate, setIsCreate] = useState(true);
@@ -42,7 +42,7 @@ const TruckDriversPage = () => {
     };
 
     const { data: truckDriversList = [], refetch, isLoading: isTruckDriversLoading, isFetching: isTruckDriversFetching } = useGetTruckDriversQuery();
-    const { data: trucksList = [], isLoading: isTruckLoading, isFetching: isTrucksFetching } = useGetTrucksQuery();
+    const { data: trucksList = [] } = useGetTrucksQuery();
     const [createTruck, { isLoading: isCreateLoading }] = useCreateTruckDriverMutation();
     const [updateTruck, { isLoading: isUpdateLoading }] = useUpdateTruckDriverMutation();
     const [deleteTruck, { isLoading: isDeleteLoading }] = useDeleteTruckDriverMutation();
@@ -65,7 +65,7 @@ const TruckDriversPage = () => {
         } else {
             if (chosenItem !== undefined) {
                 updateTruck({
-                    id: chosenItem.id,
+                    id: chosenItem._id,
                     body: { ...data }
                 })
                     .then(() => {
@@ -117,7 +117,7 @@ const TruckDriversPage = () => {
             label:
                 <TableCellContentWrapper> Assigned Truck
                 </TableCellContentWrapper>,
-            getArgs: (args: TTruckDriver) => (trucksList.find(item => args.assignedTruckId === item._id)["registeredPlate"]),
+            getArgs: (args: TTruckDriver) => (trucksList.find(item => args.assignedTruckId === item._id)?.["registeredPlate"]),
         },
         {
             key: 'action',
